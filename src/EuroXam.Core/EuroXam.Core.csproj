@@ -6,15 +6,6 @@
 
   <ItemGroup>
     <PackageReference Include="MvvmCross" Version="6.4.1" />
-    <PackageReference Include="Xamarin.Forms" Version="4.2.0.848062" />
+    <PackageReference Include="Xamarin.Forms" Version="4.3.0.991211" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewModels\Contacts\" />
-    <Folder Include="ViewModels\Home\" />
-    <Folder Include="ViewModels\Main\" />
-    <Folder Include="ViewModels\Menu\" />
-    <Folder Include="ViewModels\Root\" />
-  </ItemGroup>
-
 </Project>

@@ -42,5 +42,12 @@
         <string>UIStatusBarStyleLightContent</string>
         <key>UIViewControllerBasedStatusBarAppearance</key>
         <false/>
+      
+        <key>UIAppFonts</key>
+        <array>
+          <string>Resources/Assets/FontAwesome5BrandsRegular.otf</string>
+          <string>Resources/Assets/FontAwesome5Regular.otf</string>
+          <string>Resources/Assets/FontAwesome5Solid.otf</string>
+      </array>
     </dict>
 </plist>

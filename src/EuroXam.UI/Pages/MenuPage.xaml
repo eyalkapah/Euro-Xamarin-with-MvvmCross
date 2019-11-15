@@ -32,11 +32,11 @@
             <ListView
                 x:Name="MenuList"
                 ItemsSource="{Binding MenuItemList}"
-                SelectedItem="{Binding SelectedMenuItem, Mode=TwoWay}">
+                SelectedItem="{Binding SelectedNavigationItem, Mode=TwoWay}">
                 <ListView.Behaviors>
                     <behaviors:EventToCommandBehavior Command="{Binding BindingContext.DataContext.ShowDetailPageAsyncCommand, Source={x:Reference MainContent}}" EventName="ItemSelected" />
                 </ListView.Behaviors>
-                <ListView.ItemTemplate>
+                <!--<ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout HeightRequest="50">
@@ -45,6 +45,27 @@
                                     Text="{Binding}"
                                     VerticalOptions="CenterAndExpand" />
                             </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    FontFamily="{StaticResource FontAwesomeSolid}"
+                                    Text="{Binding Glyph}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Column="1"
+                                    Text="{Binding Title}"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

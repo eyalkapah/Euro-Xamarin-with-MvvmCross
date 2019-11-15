@@ -1,26 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using MvvmCross.Navigation;
-using EuroXam.Core.ViewModels;
+using MvvmCross.ViewModels;
+using MvvmCross.Logging;
 
 namespace EuroXam.Core.ViewModels
 {
-    public class RootViewModel : BaseViewModel
+    public class RootViewModel : MvxNavigationViewModel
     {
-        private readonly IMvxNavigationService _navigationService;
-
-        public RootViewModel(IMvxNavigationService navigationService)
+        public RootViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService) : base(logProvider, navigationService)
         {
-            _navigationService = navigationService;
         }
 
         public override async void ViewAppearing()
         {
             base.ViewAppearing();
 
-            await _navigationService.Navigate<MenuViewModel>();
-            await _navigationService.Navigate<HomeViewModel>();
+            await NavigationService.Navigate<MenuViewModel>();
+            await NavigationService.Navigate<HomeViewModel>();
         }
     }
 }
