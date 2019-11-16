@@ -10,7 +10,7 @@
     x:TypeArguments="viewModels:MenuViewModel"
     Icon="hamburger.png">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout BackgroundColor="Accent">
             <StackLayout HeightRequest="40">
                 <StackLayout.IsVisible>
                     <OnPlatform x:TypeArguments="x:Boolean">
@@ -26,15 +26,62 @@
                 <Label
                     Margin="10"
                     FontSize="Large"
-                    Text="NavigationMenu"
+                    Text="Euro 2020"
                     VerticalOptions="Center" />
             </StackLayout>
+
             <ListView
                 x:Name="MenuList"
+                BackgroundColor="AliceBlue"
                 ItemsSource="{Binding MenuItemList}"
-                SelectedItem="{Binding SelectedNavigationItem, Mode=TwoWay}">
+                SelectedItem="{Binding SelectedNavigationItem, Mode=TwoWay}"
+                VerticalOptions="StartAndExpand">
                 <ListView.Behaviors>
                     <behaviors:EventToCommandBehavior Command="{Binding BindingContext.DataContext.ShowDetailPageAsyncCommand, Source={x:Reference MainContent}}" EventName="ItemSelected" />
+                </ListView.Behaviors>
+                <!--<ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout HeightRequest="50">
+                                <Label
+                                    Margin="20,0,0,0"
+                                    Text="{Binding}"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    FontFamily="{StaticResource FontAwesomeSolid}"
+                                    Text="{Binding Glyph}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    Grid.Column="1"
+                                    Text="{Binding Title}"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView
+                x:Name="MenuListBottom"
+                HeightRequest="104"
+                ItemsSource="{Binding SecondaryMenuItems}"
+                SelectedItem="{Binding SelectedSecondaryMenuItem, Mode=TwoWay}"
+                VerticalOptions="End">
+                <ListView.Behaviors>
+                    <behaviors:EventToCommandBehavior Command="{Binding BindingContext.DataContext.SecondaryMenuItemSelectedCommand, Source={x:Reference MainContent}}" EventName="ItemSelected" />
                 </ListView.Behaviors>
                 <!--<ListView.ItemTemplate>
                     <DataTemplate>

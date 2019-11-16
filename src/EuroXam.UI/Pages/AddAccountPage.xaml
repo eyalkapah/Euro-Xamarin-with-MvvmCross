@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    x:Class="EuroXam.UI.Pages.AddAccountPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:EuroXam.Core.ViewModels;assembly=EuroXam.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    x:TypeArguments="viewModels:AddAccoutViewModel">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame>
+                <StackLayout>
+                    <Entry
+                        FontSize="Small"
+                        HorizontalOptions="Fill"
+                        Placeholder="Email" />
+                    <Entry
+                        FontSize="Small"
+                        HorizontalOptions="Fill"
+                        IsPassword="true"
+                        Placeholder="Password" />
+                    <Label
+                        FontSize="Small"
+                        HorizontalOptions="End"
+                        Text="Forgot Passowrd?" />
+                    <Button
+                        Margin="8,32"
+                        BackgroundColor="OrangeRed"
+                        CornerRadius="8"
+                        HorizontalOptions="Fill"
+                        Text="Log In"
+                        TextColor="White" />
+                </StackLayout>
+            </Frame>
+
+            <StackLayout Margin="50" Orientation="Horizontal">
+                <ImageButton
+                    Command="{Binding LoginWithFacebookCommand}"
+                    HeightRequest="64"
+                    HorizontalOptions="Center"
+                    Source="icon.png"
+                    VerticalOptions="Center"
+                    WidthRequest="64" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</views:MvxContentPage>

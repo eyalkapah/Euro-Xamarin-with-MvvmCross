@@ -8,8 +8,10 @@ namespace EuroXam.Core.Utils
 {
     public static class SolidIcons
     {
+        public const string Cog = "\uf013";
         public const string Home = "\uf015";
         public const string Play = "\uf04b";
+        public const string Plus = "\uf067";
         public const string ThumbsUp = "\uf164";
         public const string Users = "\uf0c0";
     }
