@@ -91,7 +91,7 @@ namespace EuroXam.Core.ViewModels
                 {
                     Title = "Add account",
                     Glyph = SolidIcons.Play,
-                    TargetType = typeof(AddAccoutViewModel)
+                    TargetType = typeof(SignInViewModel)
                 },
                 new NavigationItem
                 {

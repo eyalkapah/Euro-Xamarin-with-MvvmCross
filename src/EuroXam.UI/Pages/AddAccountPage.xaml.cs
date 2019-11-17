@@ -7,7 +7,7 @@ namespace EuroXam.UI.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     [MvxMasterDetailPagePresentation(Position = MasterDetailPosition.Detail, NoHistory = true, Title = "Sign In")]
-    public partial class AddAccountPage : MvxContentPage<AddAccoutViewModel>
+    public partial class AddAccountPage : MvxContentPage<SignInViewModel>
     {
         public AddAccountPage()
         {

@@ -160,9 +160,6 @@
     <AndroidResource Include="Resources\values-v19\styles.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\facebook.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\EuroXam.Core\EuroXam.Core.csproj">
       <Project>{E32013BE-CD7F-4A7F-9F5D-21A789D8F95B}</Project>
       <Name>EuroXam.Core</Name>
@@ -174,6 +171,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\google.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\facebook.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
