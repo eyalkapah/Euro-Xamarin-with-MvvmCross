@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewModels="clr-namespace:EuroXam.Core.ViewModels;assembly=EuroXam.Core"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="Sign In"
     x:TypeArguments="viewModels:AddAccoutViewModel">
     <ContentPage.Content>
         <StackLayout>
@@ -35,13 +36,30 @@
 
             <StackLayout Margin="50" Orientation="Horizontal">
                 <ImageButton
+                    BackgroundColor="Transparent"
                     Command="{Binding LoginWithFacebookCommand}"
                     HeightRequest="64"
-                    HorizontalOptions="Center"
-                    Source="icon.png"
+                    HorizontalOptions="CenterAndExpand"
+                    Source="facebook.png"
+                    VerticalOptions="Center"
+                    WidthRequest="64" />
+
+                <ImageButton
+                    BackgroundColor="Transparent"
+                    Command="{Binding LoginWithGoogleCommand}"
+                    HeightRequest="64"
+                    HorizontalOptions="CenterAndExpand"
+                    Source="google.png"
                     VerticalOptions="Center"
                     WidthRequest="64" />
             </StackLayout>
+
+            <Label
+                FontSize="Small"
+                HorizontalOptions="Center"
+                Text="No Account?" />
+            
+            <
         </StackLayout>
     </ContentPage.Content>
 </views:MvxContentPage>

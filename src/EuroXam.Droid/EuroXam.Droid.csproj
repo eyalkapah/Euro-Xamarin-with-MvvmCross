@@ -159,7 +159,9 @@
     <AndroidResource Include="Resources\drawable-mdpi\ic_mvvmcross_logo.png" />
     <AndroidResource Include="Resources\values-v19\styles.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\facebook.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EuroXam.Core\EuroXam.Core.csproj">
       <Project>{E32013BE-CD7F-4A7F-9F5D-21A789D8F95B}</Project>
@@ -169,6 +171,9 @@
       <Project>{9762C52A-D918-4B3E-806B-B0FB6E5B6350}</Project>
       <Name>EuroXam.UI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\google.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
