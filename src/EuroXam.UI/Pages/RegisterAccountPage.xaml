@@ -19,6 +19,7 @@
                         Placeholder="Email"
                         Text="{Binding Username, Mode=TwoWay}" />
                     <Entry
+                        x:Name="PasswordEntry"
                         FontSize="Small"
                         HorizontalOptions="Fill"
                         IsPassword="true"
