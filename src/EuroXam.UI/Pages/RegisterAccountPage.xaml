@@ -29,7 +29,7 @@
                     <Button
                         Margin="8,32"
                         BackgroundColor="OrangeRed"
-                        Command="{Binding CreateAccountCommand}"
+                        Command="{Binding RegisterCommandAsync}"
                         CornerRadius="8"
                         HorizontalOptions="Fill"
                         Text="CREATE ACCOUNT"

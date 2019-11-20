@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EuroXam.Core.Models.Api;
+using EuroXam.Core.Services;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
@@ -16,9 +17,9 @@ namespace EuroXam.Core.ViewModels
 {
     public class RegisterAccountViewModel : MvxNavigationViewModel
     {
+        private readonly ILoginService _loginService;
         private string _password;
         private string _username;
-        public ICommand CreateAccountCommand { get; set; }
 
         public string Password
         {
@@ -26,6 +27,7 @@ namespace EuroXam.Core.ViewModels
             set => SetProperty(ref _password, value);
         }
 
+        public ICommand RegisterCommandAsync { get; set; }
         public ICommand SignInCommand { get; set; }
 
         public string Username
@@ -34,23 +36,22 @@ namespace EuroXam.Core.ViewModels
             set => SetProperty(ref _username, value);
         }
 
-        public RegisterAccountViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, ILogin) : base(logProvider, navigationService)
+        public RegisterAccountViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, ILoginService loginService) : base(logProvider, navigationService)
         {
             SignInCommand = new MvxCommand(SignIn);
-            CreateAccountCommand = new MvxCommand(CreateCommandAsync);
+            RegisterCommandAsync = new MvxCommand(RegisterAsync);
+            _loginService = loginService;
         }
 
-        private async void CreateCommandAsync()
+        private async void RegisterAsync()
         {
-            using (var client = new HttpClient())
+            try
             {
-                var jsonContent = JsonConvert.SerializeObject(new RegisterCredentialsApiModel
-                {
-                    Username = Username,
-                    Password = Password
-                });
-
-                var result = await client.PostAsync("http://localhost:5000/api/register", new StringContent(jsonContent.ToString(), Encoding.UTF8, "application/json");
+                var result = await _loginService.RegisterAsync(Username, Password);
+            }
+            catch (Exception ex)
+            {
+                await NavigationService.Navigate<ModalViewModel>();
             }
         }
 
