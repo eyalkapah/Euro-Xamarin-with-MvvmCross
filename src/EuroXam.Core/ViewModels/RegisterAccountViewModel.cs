@@ -34,22 +34,23 @@ namespace EuroXam.Core.ViewModels
             set => SetProperty(ref _username, value);
         }
 
-        public RegisterAccountViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService) : base(logProvider, navigationService)
+        public RegisterAccountViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, ILogin) : base(logProvider, navigationService)
         {
             SignInCommand = new MvxCommand(SignIn);
-            CreateAccountCommand = new MvxCommand(CreateCommand);
+            CreateAccountCommand = new MvxCommand(CreateCommandAsync);
         }
 
-        private async void CreateCommand()
+        private async void CreateCommandAsync()
         {
             using (var client = new HttpClient())
             {
-                var content = JsonConvert.SerializeObject(new RegisterCredentialsApiModel
+                var jsonContent = JsonConvert.SerializeObject(new RegisterCredentialsApiModel
                 {
                     Username = Username,
                     Password = Password
                 });
-                var result = await client.PostAsync("http://localhost:5000/api/register", content)
+
+                var result = await client.PostAsync("http://localhost:5000/api/register", new StringContent(jsonContent.ToString(), Encoding.UTF8, "application/json");
             }
         }
 
