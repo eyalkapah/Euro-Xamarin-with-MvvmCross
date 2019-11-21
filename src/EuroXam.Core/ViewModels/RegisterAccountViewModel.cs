@@ -5,7 +5,9 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EuroXam.Core.Extensions;
 using EuroXam.Core.Models.Api;
+using EuroXam.Core.Models.UI;
 using EuroXam.Core.Services;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
@@ -47,11 +49,18 @@ namespace EuroXam.Core.ViewModels
         {
             try
             {
-                var result = await _loginService.RegisterAsync(Username, Password);
+                var response = await _loginService.RegisterAsync(Username, Password);
+
+                if (!response.HandleErrorResponse("Register"))
+                    return;
+
+                var content = await response.Content.ReadAsStringAsync();
+
+                _loginService.HandleSuccessfullLogin(content);
             }
             catch (Exception ex)
             {
-                await NavigationService.Navigate<ModalViewModel>();
+                await NavigationService.Navigate<ModalViewModel, UIMessage>(new UIMessage("Registration Error", ex.Message));
             }
         }
 

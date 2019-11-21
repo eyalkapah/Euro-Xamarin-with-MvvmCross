@@ -10,5 +10,7 @@ namespace EuroXam.Core.Services
     public interface ILoginService
     {
         Task<HttpResponseMessage> RegisterAsync(string username, string password);
+
+        void HandleSuccessfullLogin(string content);
     }
 }

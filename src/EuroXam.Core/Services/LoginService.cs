@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using EuroXam.Core.Models.Api;
+using EuroXam.Core.Models.Dtos;
 using Newtonsoft.Json;
 
 namespace EuroXam.Core.Services
@@ -19,6 +20,11 @@ namespace EuroXam.Core.Services
             _settings = settings;
         }
 
+        public void HandleSuccessfullLogin(string content)
+        {
+            var json = JsonConvert.DeserializeObject<LoginCredentials>(content);
+        }
+
         public async Task<HttpResponseMessage> RegisterAsync(string username, string password)
         {
             using (var client = new HttpClient())
@@ -29,22 +35,8 @@ namespace EuroXam.Core.Services
                     Password = password
                 });
 
-                var response = await client.PostAsync(GlobalSetting.Instance.RegisterEndpoint,
+                return await client.PostAsync(GlobalSetting.Instance.RegisterEndpoint,
                     new StringContent(jsonContent.ToString(), Encoding.UTF8, "application/json"));
-
-                if (response.IsSuccessStatusCode)
-                {
-                }
-
-                if (response.StatusCode == HttpStatusCode.Unauthorized)
-                {
-                }
-                else
-                {
-                    var message = $"Server responded with {response.StatusCode}";
-                }
-
-                return null;
             }
         }
     }
